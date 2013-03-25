@@ -88,6 +88,8 @@ module XMLSecurity
       canon_string = noko_signed_info_element.canonicalize(canon_algorithm)
       noko_sig_element.remove
 
+      Rails.logger.info("DOC: #{document.to_s}")
+
       # check digests
       REXML::XPath.each(@sig_element, "//ds:Reference", {"ds"=>DSIG}) do |ref|
   
