@@ -99,7 +99,7 @@ module XMLSecurity
         uri                           = ref.attributes.get_attribute("URI").value
         Rails.logger.info("URI: #{uri}")
 
-        hashed_element                = document.at_xpath("//*[@ID='#{uri[1..-1]}']")
+        hashed_element                = document.at_xpath("//*[@AssertionID='#{uri[1..-1]}']")
         Rails.logger.info("hashed_element: #{hashed_element}")
 
         canon_algorithm               = canon_algorithm REXML::XPath.first(ref, '//ds:CanonicalizationMethod', 'ds' => DSIG)
