@@ -90,6 +90,8 @@ module XMLSecurity
 
       Rails.logger.info("DOC: #{document.to_s}")
 
+       Rails.logger.info("(@sig_element: #{@sig_element.to_s}")
+
       # check digests
       REXML::XPath.each(@sig_element, "//ds:Reference", {"ds"=>DSIG}) do |ref|
   
