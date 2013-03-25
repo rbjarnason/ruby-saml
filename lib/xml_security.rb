@@ -88,19 +88,12 @@ module XMLSecurity
       canon_string = noko_signed_info_element.canonicalize(canon_algorithm)
       noko_sig_element.remove
 
-      Rails.logger.info("DOC: #{document.to_s}")
-
-       Rails.logger.info("(@sig_element: #{@sig_element.to_s}")
-
       # check digests
       REXML::XPath.each(@sig_element, "//ds:Reference", {"ds"=>DSIG}) do |ref|
-  
-        Rails.logger.info("REF: #{ref.inspect}")
+ 
         uri                           = ref.attributes.get_attribute("URI").value
-        Rails.logger.info("URI: #{uri}")
 
         hashed_element                = document.at_xpath("//*[@AssertionID='#{uri[1..-1]}']")
-        Rails.logger.info("hashed_element: #{hashed_element}")
 
         canon_algorithm               = canon_algorithm REXML::XPath.first(ref, '//ds:CanonicalizationMethod', 'ds' => DSIG)
         canon_hashed_element          = hashed_element.canonicalize(canon_algorithm, inclusive_namespaces).gsub('&','&amp;')
