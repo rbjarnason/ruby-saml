@@ -109,8 +109,7 @@ module Onelogin
       def validate(soft = true)
         validate_response_state(soft) &&
         validate_conditions(soft)     &&
-        document.validate(get_fingerprint, soft) && 
-        success?
+        document.validate(get_fingerprint, soft)
       end
 
       def validate_structure(soft = true)
