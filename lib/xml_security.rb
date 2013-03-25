@@ -90,9 +90,14 @@ module XMLSecurity
 
       # check digests
       REXML::XPath.each(@sig_element, "//ds:Reference", {"ds"=>DSIG}) do |ref|
+  
+        Rails.logger.info("REF: #{ref.inspect}")
         uri                           = ref.attributes.get_attribute("URI").value
+        Rails.logger.info("URI: #{uri}")
 
         hashed_element                = document.at_xpath("//*[@ID='#{uri[1..-1]}']")
+        Rails.logger.info("hashed_element: #{hashed_element}")
+
         canon_algorithm               = canon_algorithm REXML::XPath.first(ref, '//ds:CanonicalizationMethod', 'ds' => DSIG)
         canon_hashed_element          = hashed_element.canonicalize(canon_algorithm, inclusive_namespaces).gsub('&','&amp;')
 
