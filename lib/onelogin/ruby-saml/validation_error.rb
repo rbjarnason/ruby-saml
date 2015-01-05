@@ -1,6 +1,6 @@
-module Onelogin
-  module Saml
-    class ValidationError < Exception
+module OneLogin
+  module RubySaml
+    class ValidationError < StandardError
     end
   end
 end
