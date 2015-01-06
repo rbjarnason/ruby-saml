@@ -22,6 +22,7 @@ module OneLogin
         else
           @schema.validate(@xml).map{ |error| validation_error("#{error.message}\n\n#{@xml.to_s}") }
         end
+        return true
       end
 
       def validation_error(message)
