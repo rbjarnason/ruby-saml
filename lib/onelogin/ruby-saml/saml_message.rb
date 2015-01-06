@@ -26,7 +26,7 @@ module OneLogin
       end
 
       def validation_error(message)
-        raise ValidationError.new(message)
+        puts ValidationError.new(message)
       end
 
       private
