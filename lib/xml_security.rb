@@ -187,8 +187,7 @@ module XMLSecurity
         return soft ? false : (raise OneLogin::RubySaml::ValidationError.new("Fingerprint mismatch"))
       end
 
-      #validate_signature(base64_cert, soft)
-      return true
+      validate_signature(base64_cert, soft)
     end
 
     def validate_signature(base64_cert, soft = true)
